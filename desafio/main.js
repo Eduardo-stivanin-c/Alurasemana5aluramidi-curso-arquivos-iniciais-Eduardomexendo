@@ -43,14 +43,30 @@ function configteclado(input) {
 //requer tecla apelida as teclas
 
 // inicio refeirente a pagina index.html  inicial com botãoes que fazem som
+
+//onclikc em aruivo externo evento noclick
 var tecla_pom = document.querySelector('.tecla_pom');
 var pom_som = document.querySelector('#som_tecla_pom');
 var clap_som = document.querySelector('.tecla_clap');
+
 //tecla_tim
+//evento onclick dos pbotões no clik dos botões
+document.querySelector('.tecla_pom');
+tocarsom(som_tecla_clap)
+//tentaod passar o valor  variviel externa
+//evento externo onclick
+
+
+
 var sons = "";
 //autodetecta id
+
 var sonsid = "";
+
 function tocarsom(input) {
+
+
+//adaptado pro onclikc interno
     //depepende de configteclado pra fucnionar por reusar varivaveis
     //autodetecta id sem preciasar dar o coódigo converte ele em apleido direto
     sonsid = "#" + String(input.id)
@@ -62,14 +78,83 @@ function tocarsom(input) {
     tecla = sons.src
     return tecla
 }
+//aplelido pro codigo do onclick Event =e evento do quando do ingles
+ 
+//noclick  dosbotão 
+tecla_pom.onclick=Pongsom;
+//tocarsom(som_tecla_clap)
+function  Pongsom(){
+ input="";
+    tocarsom(som_tecla_pom); 
+
+}
+//apelido pro evento onclick document.querySelector(apelido).onclick
 
 
+//evvento onclick
+document.querySelector('.tecla_clap').onclick=clapsom;
+function  clapsom(){
+     
+    tocarsom(som_tecla_clap);
+}
+document.querySelector('.tecla_tim').onclick=timsom;
+function timsom(){
+    
+    tocarsom(som_tecla_tim);
+
+}
+tecla_puff.onclick=som_puff;
+function som_puff(){
+tocarsom(som_tecla_puff);
+}
+
+//pleo id ele reconhece sozinho no Javascript
+tecla_splash.onclick=somsplash;
+function somsplash(){
+tocarsom(som_tecla_splash)
+}
+tecla_toim.onclick=som_toim;
+function som_toim(){
+tocarsom(som_tecla_toim);
+}
+//evento no click 
+tecla_psh.onclick=som_psh;
+function som_psh(){
+tocarsom(som_tecla_psh);
+}
+tecla_tic.onclick=tecla_som;
+function tecla_som(){
+    tocarsom(som_tecla_tic);
+}
+
+
+
+tecla_tom.onclick=somtom;
+function somtom(){
+tocarsom(som_tecla_tom)
+
+}
+/*
+//parte pro onclick externo
+let tocar="";
+function eventosom(r){
+   //
+    tocarsom(tocar)
+}
+*/
+
+
+/*function tocaSomClap() {
+    document.querySelector('#som_tecla_clap').play()
+} */
 
 
 
 //retorna uma hora atual
 //correção em 31/10/2021 rHaloween de bug pra domingo
 /*referencias bibliograficas */
+//https://developer.mozilla.org/pt-BR/play
+
 //https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Bitwise_XOR
 //https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/this
 ///Lógica%20de%20Programação%20Crie%20seus%20primeiros%20programas%20usando%20Javascript%20e%20HTML%20by%20Paulo%20Silveira,%20Adriano%20Almeida
