@@ -19,73 +19,160 @@ var tecla_nove = document.querySelector(".nove");
 var tecla_asterisco = document.querySelector(".asterisco");
 var tecla_zero = document.querySelector(".zero");
 var tecla_hashtag = document.querySelector(".hashtag");
+const numerostel= document.querySelectorAll(".digito");
 //variva veis de controle da função configtecladoclass
 var tecla = "";
 var input = "";
-function configteclado(input) {
 
+function configteclado(input) {
     //quando um botão for pressionado ele pega o texto que aparece no escreve no campo  e retorna no console  
     tecla = input.value;
     telefone.value = telefone.value + tecla
     return tecla;
-
     // alert(tecla);
 }
+
+for ( let contador=0;contador< numerostel.length;contador++) {
+    //const teclabtm=listaDeTeclas[contador];
+    //usar som_nomedaclassepraindentificar o audio
+    //numerostel[contador].onclick=configteclado(numerostel[contador])
+   //templete
+   //const idAudio="som_" + String(instrumento);
+    //console.log(idAudio);  
+    
+    numerostel[contador].onclick=function(){
+       //telefone.value=numerostel[0].value;
+       configteclado(numerostel[contador]);
+    };
+//acessa o console do navegador
+    console.log(contador);
+}
+
+
+
 /*fim desafio
 inicio main principal  Javascript-web-paginas-dinamicas de Alura
 retornadnod pro campo de telefone via id 
 chefe descuplpe a gambiara de reusar o mesmo arquivo 
- o main é o jacvascript pagina principal por convensão de mercado
+o main é o jacvascript pagina principal por convensão de mercado
 requer variveis l input de desafio
 requer tecla apelida as teclas
- inicio refeirente a pagina index.html  inicial com botãoes que fazem som*/
-
+inicio refeirente a pagina index.html  inicial com botãoes que fazem som*/
 //onclick em aruivo externo evento noclick
 /*var tecla_pom = document.querySelector('.tecla_pom');*/
+const listaDeTeclas=document.querySelectorAll('.tecla');
 var pom_som = document.querySelector('#som_tecla_pom');
 //var clap_som = document.querySelector('.tecla_clap');
-
 //tecla_tim
 //pegando todaas a s teclas na nossa lista ,const é
-const listaDeTeclas=document.querySelectorAll('.tecla');
-//evento onclick dos pbotões no clik dos botões
 //document.querySelector('.tecla_pom');
-
 //tentaod passar o valor  variviel externa
 //evento externo onclick
-
 var sons = "";
 //autodetecta id
-
-var sonsid = "";
-//document.querySelectorAll('.tecla')
-function tocarsom(input) {
-    /*adaptado pro onclikc interno
+//
+/*adaptado pro onclikc interno
         depepende de configteclado pra fucnionar por reusar varivaveis
         autodetecta id sem preciasar dar o coódigo converte ele em apleido direto*/
-    sonsid = "#" + String(input.id)
-    sons = document.querySelector(sonsid);
-    //input é entrada acima é apelido do botão e retornara o texto aqui é apelido 
+        //var somx="";
+function tocarsom(seletoraudio) {
+  sonsid = "#" + String(seletoraudio);
+  sons = document.querySelector(sonsid); 
+  //sons =document.querySelector(input);
     //toca osom pelo id dele 
-    sons.play()
+
+ /* if (sons=== null ) {
+        alert('Elemento não encontrado');
+        console.log("Elemento não encontrado");
+        
+}    */ 
+
+if (sons != null && console.log(sons.localName==='audio')) {
+    //localname retorna nome datag
+   
+    sons.play();
     //retorna a url apertado do som 
-    tecla = sons.src
-    return tecla
+    tecla = seletoraudio.src;
+    console.log(seletoraudio);
+   //}
+    
+   
+}//se o elemento for nulo ediferente de audio 
+ else {
+    alert('Elemento não encontrado');
+    console.log("Elemento não encontrado");
+}
+     
+    //return tecla
+//evitandoi erro do eçlemento com valçor verrado pra mnaão ser hackeado 
+//se elento for nulo
+
+
+}
+//const listaDeTeclas=document.querySelectorAll('.tecla');
+//enquanto contador < litamanho da lista
+//funçao anonimoa
+/*let contador =0;
+while (contador<listaDeTeclas.length) {
+
+    const teclabtm=listaDeTeclas[contador];
+    //usar som_nomedaclassepraindentificar o audio
+    const instrumento=teclabtm.classList[1];
+   //templete
+   const idAudio="som_" + String(instrumento);
+    console.log(idAudio);
+   
+    listaDeTeclas[contador].onclick=function(){
+        tocarsom(idAudio);
+    };
+    contador =contador +1;
+   //acessa o console do navegador
+    console.log(contador);
+    
+}*/
+for ( let contador=0;contador<listaDeTeclas.length;contador++) {
+    const teclabtm=listaDeTeclas[contador];
+    //usar som_nomedaclassepraindentificar o audio
+    const instrumento=teclabtm.classList[1];
+   //templete
+   const idAudio="som_" + String(instrumento);
+    console.log(idAudio);  
+    listaDeTeclas[contador].onclick=function(){
+        tocarsom(idAudio);
+    }
+//acessa o console do navegador
+    console.log(contador);
+
+    //quando a tecla enter  do tecla estiver abaixxanda ative a clssse ativa
+    //Or ou é || no Javacript
+    listaDeTeclas[contador].onkeydown=function(evento){
+        console.log(evento.code==='Space');
+        if (evento.code=='Space' || evento.code=='Enter') {
+            listaDeTeclas[contador].classList.add('ativa');    
+        }
+
+        
+    }
+
+    listaDeTeclas[contador].onkeyup=function(){
+        
+        listaDeTeclas[contador].classList.remove('ativa');
+    }
+    
+
+
 }
 
-
-
+//https://getbootstrap.com.br/docs/4.1/getting-started/javascript/
 //aplelido pro codigo do onclick Event =e evento do quando do ingles
-
 //noclick  dosbotão 
-
 /*
 tecla_pom.onclick = Pongsom;
 //tocarsom(som_tecla_clap)
-
 //som Pongsom manda função tocarsom tocar ao som do Pom/*/
 // evento onclick tecla POm
-listaDeTeclas[0].onclick=Ponsom;
+/*listaDeTeclas[0].onclick=Ponsom;*/
+/*
 function Ponsom() {
     input = "";
     tocarsom(som_tecla_pom);
@@ -94,18 +181,15 @@ function Ponsom() {
 //apelido pro evento onclick document.querySelector(apelido).onclick
 //evvento onclick
 //document.querySelector('.tecla_clap').onclick = clapsom;
-
 //som clapsom manda função tocarsom tocar ao som do Clap
-listaDeTeclas[1].onclick=clapsom;
+/*listaDeTeclas[1].onclick=clapsom;
 function clapsom() {
-
     tocarsom(som_tecla_clap);
 }
 /*
 document.querySelector('.tecla_tim').onclick = timsom;
 //evento no click
-
-//som timsom manda função tocarsom tocar ao som do Tom*/
+//som timsom manda função tocarsom tocar ao som do Tom
 listaDeTeclas[2].onclick=timsom;
 function timsom() {
 
@@ -125,7 +209,6 @@ listaDeTeclas[4].onclick=somsplash;
 function somsplash() {
     tocarsom(som_tecla_splash);
 }
-
 //tecla_toim.onclick = som_toim;
 listaDeTeclas[5].onclick=som_toim;
 //som som_toim manda função tocarsom tocar ao som do Toim
@@ -138,7 +221,6 @@ listaDeTeclas[6].onclick=som_psh;
 function som_psh() {
     tocarsom(som_tecla_psh);
 }
-
 //tecla_tic.onclick = tecla_som;
 listaDeTeclas[7].onclick=tecla_tic;
 //som som_tic manda função tocarsom tocar ao som do Tic
@@ -190,6 +272,7 @@ Lógica de proagramação crie seus primeiros programas usando Javascript E HTML
 https://getbootstrap.com.br/docs/4.1/components/forms//
 Lógica%20de%20Programação%20Crie%20seus%20primeiros%20programas%20usando%20Javascript%20e%20HTML%20by%20Paulo%20Silveira,%20Adriano%20Almeida.pdf
 https://odesenvolvedor.com.br/tabela-de-key-codes-para-javascript_1464.html
-https://getbootstrap.com.br/docs/4.1/getting-started/javascript/
+
  fim de desafio aqui é  desafio deixa pro nfinal do arquvio pra disfarçar esse reuso nos slides de apresentação senã oconfieunde o povo
 */
+
